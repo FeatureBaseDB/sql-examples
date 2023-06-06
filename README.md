@@ -43,7 +43,7 @@ To create and populate the Collatz sequences in FeatureBase Cloud, get the token
 python3 fb_token.py
 ```
 
-Put this token, along with the path of the endpoint in a file called 'config.py'. Reference 'config.py.sample' for the format.
+Put this token, along with the path of the endpoint in a file called `config.py`. Reference `config.py.sample` for the format.
 
 Note that the `/query/sql` needs to be stripped from the end of the URL you use in the config file.
 
