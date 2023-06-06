@@ -1,0 +1,8 @@
+# config
+dev = "True"
+
+# tokens
+featurebase_token = "TOKEN"
+
+# featurebase (please ensure "/query/sql" is stripped from the URL)
+featurebase_endpoint = "https://query.featurebase.com/v2/databases/xxxx-xxxx"
