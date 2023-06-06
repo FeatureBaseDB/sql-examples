@@ -6,6 +6,7 @@ This repository contains a collection of SQL examples that demonstrate various t
 
 The repository is structured as follows:
 
+```
 sql-examples/
 ├── data/
 │ ├── example1.sql
@@ -15,7 +16,7 @@ sql-examples/
 │ └── database.py
 ├── output.sql
 └── README.md
-
+```
 
 - The `data/` directory contains a collection of `.sql` files, each representing a specific SQL query examples for a given table. These files are meant to showcase different query patterns and serve as a starting point for building more complex queries.
 
