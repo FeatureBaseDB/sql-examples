@@ -1,6 +1,8 @@
 # SQL Examples
 
-This repository contains a collection of SQL examples that demonstrate various types of queries. The purpose of this repository is to serve as a reference for users looking to understand and learn different SQL query patterns.
+This repository contains a collection of SQL examples for [FeatureBase](https://featurebase.com/) that demonstrate various types of queries supported by our OLAP database solution that leverages [B-trees](https://en.wikipedia.org/wiki/B-tree) and [Roaring Bitmaps](https://roaringbitmap.org/). The purpose of this repository is to serve as a reference for users looking to understand and learn different SQL query patterns.
+
+Documentation for FeatureBase SQL may be found here: [https://docs.featurebase.com/](https://docs.featurebase.com/)
 
 ## Structure
 
