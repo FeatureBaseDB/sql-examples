@@ -49,7 +49,15 @@ Put this token, along with the path of the endpoint in a file called `config.py`
 
 Note that the `/query/sql` needs to be stripped from the end of the URL you use in the config file.
 
-The result of a run will be a table called `collatz_flotz` in your account.
+To run the Collatz sequence and write it into FeatureBase Cloud, do the following:
+
+```
+python3 collatz.py
+```
+
+Keep in mind a file named `output.sql` will be written to the project directory. This file may be moved into `/data` if you want to save it.
+
+The result of a run will be a table called `collatz_flotz` in your account. This table may be queried via the [Cloud UI](https://cloud.featurebase.com/query).
 
 ## Possible Queries
 It would be interesting to build a query that traverses graphs.
