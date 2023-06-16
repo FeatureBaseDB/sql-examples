@@ -1,43 +1,52 @@
-The data has been taken from Kaggle and it is available at this URL: https://www.kaggle.com/datasets/viktoriiashkurenko/278k-spotify-songs
+# FbSql Spotify Setup
 
-The data sample have been uploaded online using the service transfer.sh: https://transfer.sh/
+## Dataset
 
-Sign in in Featurebase Cloud
-Create a serverless database named "spotify"
-Run FbSql locally
+The data for this project has been taken from Kaggle and is available at this URL: [278k Spotify Songs](https://www.kaggle.com/datasets/viktoriiashkurenko/278k-spotify-songs).
 
-```
- fbsql --host="https://query.featurebase.com" \
-  --email="acappelletti@molecula.com" \
-  --password="<myPassword>"
-```
+## Serverless Database Setup
 
-Connect to the database
+1. Sign in to [Featurebase Cloud](https://www.featurebase.com) using your credentials.
 
-```
-\c spotify
-```
+2. Create a serverless database named "spotify" in Featurebase Cloud.
 
-Add six workers
+## Installation and Configuration
 
-```
-alter database spotify with units 6;
-```
+1. Install FbSql locally on your machine.
 
-Create the table and insert the data for playlists
+2. Open your terminal or command prompt and run the following command to connect to Featurebase Cloud using FbSql:
 
-```
-\i insert_playlists.sql
-```
+   ```shell
+   fbsql --host="https://query.featurebase.com" --email="acappelletti@molecula.com" --password="<yourPassword>"
+   ```
 
-Create the table and insert the data for artists
+3. Once connected, use the following command to connect to the "spotify" database:
+   ```shell
+   \c spotify
+   ```
+4. After connecting to the "spotify" database, increase the number of workers to six for better performance:
+   ```shell
+   alter database spotify with units 6;
+   ```
 
-```
-\i insert_artists.sql
-```
+## Data Import
 
-Create the table and insert the data for tracks
+1. Download the dataset from Kaggle: [278k Spotify Songs](https://www.kaggle.com/datasets/viktoriiashkurenko/278k-spotify-songs).
 
-```
-\i insert_tracks.sql
+2. Upload the dataset to an online file-sharing service like [transfer.sh](https://transfer.sh/).
+
+3. Use the provided SQL files (`insert_playlists.sql`, `insert_artists.sql`, `insert_tracks.sql`) to create and populate the respective tables:
+
+   ```shell
+   \i insert_playlists.sql
+   \i insert_artists.sql
+   \i insert_tracks.sql
+   ```
+
+## Running Queries
+
+To run the queries, execute the `queries.sql` file:
+
+```shell
+\i queries.sql
 ```
