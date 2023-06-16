@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const filePath = '/Users/davidkagan/molecula/sqlathon/fbsql.in';
+const filePath = `${__dirname}/fbsql.in`;
 const agecsv = 'https://featurebase-public-data.s3.us-east-2.amazonaws.com/age.csv';
 const encoding = { encoding: 'utf8' };
 
