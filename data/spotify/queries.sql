@@ -26,6 +26,12 @@ SELECT * FROM playlists
 WHERE n_tracks > 100
 ORDER BY playlist_followers DESC;
 
+-- Find the albums released in a specific year along with the total number of tracks in each album:
+SELECT release_date, album_type, COUNT(*) AS track_count
+FROM tracks
+WHERE SUBSTRING(release_date, 1, 4) = '2022' -- Replace '2022' with the desired year
+GROUP BY release_date, album_type;
+
 -- Find comprehensive details of playlists, tracks, and associated artists by performing a join operation on the respective tables.
 SELECT
     p.name AS playlist_name,
@@ -139,6 +145,26 @@ SELECT
     SUBSTRING(name, 1, 2) AS substr
 FROM
     tracks;
+
+-- Find the artists who have collaborated with the most number of other artists:
+SELECT a1._id AS artist_id, COUNT(DISTINCT a2._id) AS collaborator_count
+FROM artists a1
+JOIN tracks t1 ON SETCONTAINS(t1.artists_uris, a1._id)
+JOIN artists a2 ON SETCONTAINS(t1.artists_uris, a2._id) AND a1._id != a2._id
+GROUP BY a1._id
+ORDER BY collaborator_count DESC
+LIMIT 10;
+
+-- Find the artists with the highest average track popularity:
+SELECT a._id AS artist_id, AVG(t.popularity) AS average_track_popularity
+FROM artists a
+JOIN tracks t ON SETCONTAINS(t.artists_uris, a._id)
+GROUP BY a._id
+ORDER BY average_track_popularity DESC
+LIMIT 10;
+
+
+
 
 
 
