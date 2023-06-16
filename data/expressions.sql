@@ -143,5 +143,27 @@ values
     (99, 'Zoey', 'White', 'Female', 30, 9, 1987, 'Houston'),
     (100, 'Anthony', 'Edwards', 'Male', 24, 7, 1994, 'Miami');
 
+-- select all from person data
 select * from person_data;
 
+
+-- enrich using some expressions
+select 
+    _id, 
+    first_name || ' ' || last_name as full_name,
+    gender, 
+    datetimefromparts(birth_year, birth_month, birth_day, 0, 0, 0, 0) as birth_day,
+    case 
+        when birth_year between 1901 and 1924 then 'Greatest'
+        when birth_year between 1925 and 1945 then 'Silent'
+        when birth_year between 1946 and 1964 then 'Boomer'
+        when birth_year between 1965 and 1979 then 'Generation X'
+        when birth_year between 1980 and 1994 then 'Millenial'
+        when birth_year between 1995 and 2012 then 'Generation Z'
+        when birth_year between 2013 and 2025 then 'Gen Alpha'
+
+    else 'Unknown'
+    end as generation,
+    city
+from 
+    person_data;
