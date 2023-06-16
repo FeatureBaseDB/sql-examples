@@ -7,7 +7,7 @@ CREATE TABLE artists (
 );
 
 -- Url of the dataset: https://transfer.sh/qQDFEMJ3ij/artists.csv
--- Insert data into artists
+-- Insert data into artists with a bulk insert by ingesting a csv file from an url
 
 BULK INSERT
 INTO artists (_id, artist_popularity, artist_genres, artist_followers)
@@ -23,5 +23,5 @@ WITH
     INPUT 'URL'
     HEADER_ROW;
 
--- Make sure the data is there
+-- Make sure the data is there by selecting the first row
 SELECT * FROM artists LIMIT 1;

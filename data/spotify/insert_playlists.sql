@@ -11,7 +11,7 @@ CREATE TABLE playlists (
 );
 
 -- Url of the dataset: https://transfer.sh/csCuCE2FTO/final_playlists.csv
--- Insert data into playlists
+-- Insert data into playlists with a bulk insert by ingesting a csv file from an url
 
 BULK INSERT
 INTO playlists (_id, uri, name, description, spotify_query, author, n_tracks, playlist_followers)
@@ -31,5 +31,5 @@ WITH
     INPUT 'URL'
     HEADER_ROW;
 
--- Make sure the data is there
+-- Make sure the data is there by selecting the first row
 SELECT * FROM playlists LIMIT 1;
