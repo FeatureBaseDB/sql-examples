@@ -163,11 +163,12 @@ GROUP BY a._id
 ORDER BY average_track_popularity DESC
 LIMIT 10;
 
-
-
-
-
-
-
+-- Find the artists with the most collaborative tracks:
+SELECT a._id AS artist_id, COUNT(DISTINCT t._id) AS collaborative_track_count
+FROM artists a
+JOIN tracks t ON SETCONTAINS(t.artists_uris, a._id)
+GROUP BY a._id
+ORDER BY collaborative_track_count DESC
+LIMIT 10;
 
 
