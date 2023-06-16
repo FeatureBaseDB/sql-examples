@@ -125,6 +125,16 @@ SELECT * FROM t1 WHERE i1 = 4.0;
 -- this would produce the records where i1 was 4. ours is stricter.
 SELECT * FROM t1 WHERE i1 = "4";
 
+-- this won't work because teh t1a/t1b names aren't available to the
+-- top-level query; you'd want to use a top-level select/join/group-by
+-- rather than sub-selects.
+SELECT * FROM
+  (SELECT t1a.i1 FROM t1 AS t1a GROUP BY t1a.i1)
+JOIN
+  (SELECT count(t1b.i1) FROM t1 AS t1b GROUP BY t1b.i1)
+ON
+  t1a.i1 = t1b.i1;
+
 -- this probably works but restores us to a clean state so the file
 -- runs as expected next time.
 DROP TABLE t1;
