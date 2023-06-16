@@ -1,0 +1,6 @@
+1,player died,the player character failed the level
+2,player level up,the player character completed the level
+3,player quit,the player quit the level before completion
+4,player killed enemy,the player character killed an enemy
+5,player killed three in a row,the player killed three enemies in a row without losing HP
+6,player made purchase,the player made an in-app-purchase
