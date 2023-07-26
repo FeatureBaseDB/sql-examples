@@ -1,13 +1,13 @@
--- The SQLs in this file work against cutomer demographic data loaded into the following 2 tables:
+-- The SQLs in this file process the cutomer demographic data loaded into the following 2 tables:
 -- table 1: CSEG
 -- table 2: SKILLS
 
--- SKILLS table stores the following information about the customer:
+-- SKILLS table store the following information about customers:
     --skills 
     --job titles
     --availability for hire
--- During data load the data for skills and titles are switched. 
--- To fix the name switch and to simply the logic needed to determine the avaialble for hire status we create a view against this table.
+-- During data load the mapping of skills and titles are switched and skills are loaded into titles and vice versa.
+-- To fix this mapping error and to simplify the logic needed to determine employment status we create a view on this table.
 
 create view skills_v as 
 select id customer_id,
@@ -27,16 +27,16 @@ select skills, count(*)
 from skills_v with (flatten(titles)) 
 group by skills;
 
---CSEG table stores the following information about the customer:
+--CSEG table stores the following customer information:
     --gender
     --age
     --location    
     --education
     --political affiliation
     --election participation
--- we can write aggregation queries against this table to extract 
--- summary counts for customers falling in varies segmentation conditions.
--- for example the following query extracts summary counts of college educated customers by sex, age and city
+-- we can write aggregation queries on this table to extract 
+-- summary counts of customers by segmentation rules.
+-- for example the following query extracts summary of college educated customers by sex, age and city
 select sex, age, city, count(*) 
 from cseg cs 
 where setcontains(education, 'Bachelor''s degree') 
@@ -80,7 +80,7 @@ where cs._id=sk.customer_id
 group by political_party_affiliation, sk.skills;
 
 -- if we want to extract the list of customers whose income is less than 
--- the average income for therir location the following query will do that
+-- the average income for their location the following query will do that
 select * 
 from cseg o
 where o.income <(select avg(i.income)
